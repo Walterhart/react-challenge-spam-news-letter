@@ -35,9 +35,20 @@ export default function App() {
         3. If you do the above correctly and click the "Subscribe" button, you should also see the 
 		   placeholder text of the input become "Subscribe a friend", and you and be able to enter another email address and check it as well.
  */
-
+	
+	function handleSubmit(e){
+		e.preventDefault();
+		setUserEmail(userInput)
+		setUserInput("")
+		if(emailList.includes(userInput.trim().toLowerCase())){
+			setDuplicate(true)
+		}else{
+			setDuplicate(false)
+		}		 
+	}
+	
 	return (
-		<form className="form">
+		<form className="form" onSubmit={handleSubmit}>
 		
 			<TopText userEmail={userEmail} duplicate={duplicate}/>
 		
